@@ -1,0 +1,74 @@
+include ../mixins/_mixins.pug
+
+block variables
+
+<!DOCTYPE html>
+html(lang="en")
+head
+	meta(charset="UTF-8")
+	title #{title}
+	
+	<!--[if IE]>
+	meta(http-equiv='X-UA-Compatible', content="IE=edge")
+	<![endif]-->
+
+	meta(name="viewport" content="width=device-width,initial-scale=1")
+	
+	meta(name="keywords" content="")
+	meta(name="description" content="")
+
+	<!-- build:cssCustom css/main.css -->
+	link(rel="stylesheet", href="css/main.css")
+	<!-- endbuild -->
+
+	<!-- build:cssCustom css/vendor.css -->
+	link(rel="stylesheet", href="fonts/Museo_Sans/stylesheet.css")
+	<!-- endbuild -->
+
+	<!-- build:cssCustom css/vendor.css -->
+	link(rel="stylesheet", href="fonts/Museo/stylesheet.css")
+	<!-- endbuild -->
+
+	<!-- build:cssVendor css/vendor.css -->
+	link(rel="stylesheet", href="fonts/font-awesome-4.7.0/css/font-awesome.min.css")
+	<!-- endbuild -->
+
+	<!-- build:cssVendor css/vendor.css -->
+	link(rel="stylesheet" href="libs/owl.carousel/assets/owl.carousel.css")
+	<!-- endbuild -->
+
+	<!-- build:cssVendor css/vendor.css -->
+	link(rel="stylesheet", href="libs/bootstrap-4-grid/grid.min.css")
+	<!-- endbuild -->
+
+	<!--[if lt IE 9]>
+	script(src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js")
+	<![endif]-->
+	
+body(class=pageClass)
+	include ../modules/header.pug
+	include ../modules/card.pug
+	include ../modules/service.pug
+	include ../modules/clients.pug
+	include ../modules/location.pug
+	include ../modules/contact-form.pug
+	include ../modules/copyraight.pug
+	
+	block content
+
+	<!-- build:jsLibs js/libs.js -->
+	script(src="libs/jquery/jquery.min.js")
+	<!-- endbuild -->
+
+	include ../modules/footer.pug
+
+	<!-- build:jsVendor js/vendor.js -->
+	block scripts
+	<!-- endbuild -->
+	
+	<!-- build:jsMain js/main.js -->
+	script(src="js/main.js")
+	<!-- endbuild -->
+
+
+	
