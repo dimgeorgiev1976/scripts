@@ -14,7 +14,7 @@
         position: pos,
         map: map,
         title: 'Geek Label London',
-        icon: 'img/icons/map-pin.png'
+        icon: 'img/bg/map-pin.png'
     });
 
         // Создаем наполнение для информационного окна
@@ -37,16 +37,18 @@
         Width: 400
     });
 
-    
+
+    // Создаем прослушивание, по клику на маркер - открыть инфо-окно infowindow
     google.maps.event.addListener(marker, 'click', function () {
         infoWindow.open(map, marker);
     });
 
+    // Создаем прослушивание, по клику на маркер - открыть инфо-окно infowindow
     google.maps.event.addListener(marker, 'mouseover', function () {
         var point = fromLatLngToPoint(marker.getPosition(), map);
         $('#marker-tooltip').html(marker.tooltipContent ).css({
-            'left': point.x+100,
-                'top': point.y-100
+            'left': point.x,
+                'top': point.y
         }).show();
     });
 

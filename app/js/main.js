@@ -1,66 +1,75 @@
-$(document).ready(function(){
+$(document).ready(function() {
 
-   // jQuery OwlCarousel2-2.3.4
-   var one = $("#owl-one");
-   var two = $("#owl-two");
-   one.owlCarousel({
-      loop:true,
-      margin:20,
-      dotsEach:2,
-      smartSpeed:700,
-      responsive:{
-          0:{ items:1},
-          768:{ items:1,
-            margin:100},
-          1200:{ items:2,
-            nav:true,
-           navText : ["", ""],
-              } 
-           }
-      });
-    two.owlCarousel({
-      loop:true,
-      margin:10,
-      nav:true,
-      navSpeed:700,
-      navText : ["", ""],
-      responsive:{
-          0:{  items:1
-          },
-          768:{ items:2
-          },
-          1200:{ items:4
-          }
+
+	//slide2id - плавная прокрутка по ссылкам внутри страницы
+	$("nav a,a[href='#top'],a[rel='m_PageScroll2id'],a.PageScroll2id").mPageScroll2id({
+	    highlightSelector:"nav a"
+	});
+
+
+
+	// MixItUp - фильтрация работ в портфолио
+	$('#portfolio-projects').mixItUp();
+
+
+	// FancyBox - galery
+	$(".fancybox").fancybox({
+			// Default - with fix from scroll to top
+            helpers: {
+                overlay: {
+                    locked: false
+                }
             }
-        });
-        // Go to the next item
-        
-        var owl = $('.owl-carousel');
-        owl.owlCarousel();
-
-        $('#owl-dot').click(function() {
-            owl.trigger('next.owl.carousel',[1000]);
     });
+	// End of FancyBox - galery
 
 
-       var navToggleButton = $("#owl-prev a");
-     $("#owl-prev a").click(function() {
-        $("#owl-prev a").removeClass('active');
-        $(this).addClass('active');
-      });
-    
+	// jQuery Validate JS
+	$("#contact-form").validate({
+		rules: {
+			name: { required: true },
+			email: { required: true, email: true },
+			// skype:  { required: true },
+			// phone:  { required: true },
+			message: { required: true }
+		},
 
-     // Функция для анимация иконки 
-      function navButtonToggle(){
-        if (navToggleButton.hasClass("active")) {
-          navToggleButton.removeClass("active");
-        } else {
-          navToggleButton.addClass("active");
-        }
-      }
-   //slide2id - плавная прокрутка по ссылкам внутри страницы
-      $("li a,a[href='#top'],a[rel='m_PageScroll2id'],a.PageScroll2id").mPageScroll2id({
-          highlightSelector:"nav a"
-      });
+		messages: {
+			name: "Пожалуйста, введите свое имя",
+			email: {
+				required: "Пожалуйста, введите свой email",
+				email: "Email адрес должен быть в формате name@domain.com . Возможно вы ввели email с ошибкой."
+			},
+			message: "Пожалуйста, введите текст сообщения"
+		},
 
-	 });
+		submitHandler: function(form) {
+		  ajaxFormSubmit();
+		}
+
+	})
+
+	// Функция AJAX запрса на сервер
+	function ajaxFormSubmit(){
+		var string = $("#contact-form").serialize(); // Соханяем данные введенные в форму в строку. 
+
+		// Формируем ajax запрос
+		$.ajax({
+			type: "POST", // Тип запроса - POST
+			url: "php/mail.php", // Куда отправляем запрос
+			data: string, // Какие даные отправляем, в данном случае отправляем переменную string
+			
+			// Функция если все прошло успешно
+			success: function(html){
+				$("#contact-form").slideUp(800);
+				$('#answer').html(html);
+			}
+		});
+
+		// Чтобы по Submit больше ничего не выполнялось - делаем возврат false чтобы прервать цепчку срабатывания остальных функций
+		return false; 
+	}
+
+
+
+}); 
