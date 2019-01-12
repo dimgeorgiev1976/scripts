@@ -1,0 +1,71 @@
+
+@import "../base/_variables.less";
+
+.heading {
+	margin: 0;
+	padding: 0;
+	font-family: 'Museo 300';
+	font-size: 100px;
+	font-weight: normal;
+	font-style: normal;
+	color: @grey-heading;
+	line-height: 1.692;
+	text-align: center;
+	margin-bottom: 63px;
+	margin-left: 27px;
+	&--services {
+		@media (min-width: 768px) {
+		margin-right: 34px; 
+		margin-bottom: 112px;
+		}
+		@media (min-width: 1200px) {
+		margin-left: 8px;	} }
+	&--location {
+		margin-bottom: 70px;
+	@media (min-width: 768px) {
+		margin-right: 34px;		 }
+    @media (min-width: 1200px) {
+    	font-size: 120px;
+		margin-bottom: 59px;
+		} }
+	&--contact {
+		margin-left: 3px;
+		margin-bottom: 0;
+	@media (min-width: 768px) {
+		margin-bottom: 63px;
+		margin-top: -31px; }
+	@media (min-width: 1200px) {
+		font-size: 120px; 
+		margin-top: 0;
+		margin-left: 8px;	} }
+	&--clients {
+	@media (min-width: 768px) {
+		margin-right: 32px;
+		margin-bottom: 0px;
+		}
+	@media (min-width: 1200px) {
+		font-size: 120px; 
+		margin-top: 0;
+		margin-left: 8px;	} }
+	 } 
+ #visible {
+	display: none;
+    @media (min-width: 1200px){
+    	display: block;
+		}
+}
+#invisible {
+	display: block;
+    @media (min-width: 1200px){
+    	display: none;
+		}
+}
+.heading--medium { font-size: 24px;
+			line-height: 28px;
+			margin: 15px 1px 40px;	@media (min-width: 1200px) {  } }
+	
+.heading--center { text-align: center; } 
+.heading--white{color: #FFF;} 
+.heading--pading-top { padding-top: 7px;}
+.heading--margin { margin-top: -4px; margin-bottom: 22px; }
+.heading--slider { margin-left: -22px;  margin-bottom: -39px; }

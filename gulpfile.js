@@ -28,6 +28,10 @@ var uglify = require("gulp-uglify"); // Сжатие JS
 var minifyCss = require("gulp-minify-css"); // Сжатие CSS
 var rev = require('gulp-rev');
 
+// jQuery Validation Plugin
+// var validation =  require('jquery-validation');
+
+
 gulp.task('server', function() {
 	browserSync.init({
 		server: { baseDir: './app/'}
@@ -137,12 +141,18 @@ gulp.task('copy:libs', function(callback) {
    
     gulp.src('node_modules/jquery/dist/**/*.*')
 		.pipe(gulp.dest('./app/libs/jquery'));
+		
+    gulp.src('node_modules/jquery-validation/dist/**/*.*')
+		.pipe(gulp.dest('./app/libs/jquery-validation'));
 
     gulp.src('node_modules/fancybox/dist/**/*.*')
 		.pipe(gulp.dest('./app/libs/fancybox'));
 
     gulp.src('node_modules/owl.carousel/dist/**/*.*')
 		.pipe(gulp.dest('./app/libs/owl.carousel'));
+
+    gulp.src('node_modules/page-scroll-to-id/**/*.*')
+		.pipe(gulp.dest('./app/libs/page-scroll-to-id'));
 
 	gulp.src('node_modules/bootstrap-4-grid/css/**/*.*')
 		.pipe(gulp.dest('./app/libs/bootstrap-4-grid'))
