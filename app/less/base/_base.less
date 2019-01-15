@@ -18,6 +18,15 @@ p {
 	line-height: 24px;
 	color: #777;
 }
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
 
 .block {
 	background: #FFDB4C;

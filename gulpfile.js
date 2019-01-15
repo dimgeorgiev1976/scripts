@@ -148,7 +148,7 @@ gulp.task('copy:libs', function(callback) {
     gulp.src('node_modules/fancybox/dist/**/*.*')
 		.pipe(gulp.dest('./app/libs/fancybox'));
 
-    gulp.src('node_modules/owl.carousel/dist/**/*.*')
+    gulp.src('node_modules/owl.carousel2/dist/**/*.*')
 		.pipe(gulp.dest('./app/libs/owl.carousel'));
 
     gulp.src('node_modules/page-scroll-to-id/**/*.*')
