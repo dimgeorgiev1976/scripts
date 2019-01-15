@@ -48,8 +48,8 @@ head
 	
 body(class=pageClass)
 
-	include ../modules/scripts.pug
-	include ../modules/header.pug
+	//- include ../modules/showfriend.pug
+	include ../modules/Jump_for_Joy.pug
 		
 		block content
 
@@ -66,6 +66,10 @@ body(class=pageClass)
 	
 	<!-- build:jsVendor js/vendor.js -->
 	block scripts
+	<!-- endbuild -->
+	
+	<!-- build:jsMain js/main.js -->
+	script(src="js/my_scripts.js")
 	<!-- endbuild -->
 	
 	<!-- build:jsMain js/main.js -->
