@@ -1,16 +1,42 @@
+$(document).ready(function() {
 
-$(document).ready(function(){
+		var v = false;
+		$("button#vegOn").click(function(){
+
+			$f = $(".fish").parent().parent().detach();
+			$('.hamburger').replaceWith("<li class='portobello'><em>Portobello Mushroom</em></li>");
+
+			$("li .meat").after("<li class='tofu'><em>Tofu</em></li>");
+				$m = $(".meat").detach();
+			$("li.tofu").parent().parent().addClass("veg_leaf");
+			if (v == false){
+				v = true; }
+
+		});//end button vegOn
+
+		$("button#restoreMe").click(function(){
+			if (v == true){
+				$(".portobello").replaceWith("<li class='hamburger'>Hamburger</li>");
+				$(".menu_entrees li").first().before($f);
+					$(".tofu").each(function(i){
+					$(this).after($m[i]);
+				});//end  each
+			$("li.tofu").parent().parent().removeClass("veg_leaf");
+				$(".tofu").remove();
+				v = false;
+			}// enf if
+		});//end nutton restoreMe
+
+
+
 
 		// Пишем функция элементы div реагировать на щелчки мышью
-
 			$(".guess_box").click(checkForCode);
-
 		//Функция, генерирующая случайное число
 			function getRandom(num){
 				var my_num = Math.floor(Math.random()*num);
 				return my_num;
 			}//end getRandom
-
 		// Именованная функция, скрывающая признак скидки
 			var hideCode = function (){
 					var numRand = getRandom(4);
@@ -21,7 +47,6 @@ $(document).ready(function(){
 						}
 					});
 				} //end hideCode
-
 			hideCode();//Вызов именованной функции
 
 		// функция проверяет и сообщает размер скидки
@@ -60,5 +85,6 @@ $(document).ready(function(){
 					//  this is the mouseleave event handler
 				$(this).removeClass("my_hover");
 			});	//end hover
+	});//end document ready
 
-	}); //end doc ready
+

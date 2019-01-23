@@ -24,59 +24,15 @@
   <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script><![endif]-->
 </head>
 <body class="index-page">
-  <button id="move_up">Move Up</button>
-  <button id="move_down">Move Down</button>
-  <button id="color">Change Color</button>
-  <button id="disappear">Disappear/Re-appear</button>
-  <div class="div" id="change_me">Make Me Do Stuff!</div>
-  <div class="header">
-    <div class="header__inner">
-      <div class="row justify-content-center">
-        <div class="col-xl-9">
-          <div class="header__wrapper"><a class="header__inner-logo"><img src="img/icons/gl-logo.png" alt="logo"/></a>
-            <p class="header-inner__title">A team of self confessed geeks who are all about great digital design</p><a><img class="button" src="img/icons/ghost-btn.png" alt="button"/></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="location">
-    <div class="heading heading--location" id="invisible">Find us</div>
-    <div class="heading heading--location" id="visible"> How to find us</div>
-    <div class="map-wrapper">
-      <div class="map" id="map"></div>
-      <div id="marker-tooltip">
-        <div class="row">
-          <div class="text-wrapper text-wrapper--xl-invisible">
-            <p class="contacts-block__title">Geek Label </p>
-            <p class="contacts-block__address contacts-block__address--l-s">4th Floor, 27 - 33 Bethnal Green Road</p>
-            <p class="contacts-block__address">Shoreditch, London, E1 6LA</p>
-          </div>
-          <div class="text-wrapper text-wrapper--xl-visible">
-            <p class="contacts-block__title">Geek Label </p>
-            <p class="contacts-block__address contacts-block__address--l-s">4th Floor</p>
-            <p class="contacts-block__address contacts-block__address--l-s">27 - 33 Bethnal Green Road</p>
-            <p class="contacts-block__address">Shoreditch</p>
-            <p class="contacts-block__address">London</p>
-            <p class="contacts-block__address">E1 6LA</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-xl-3"><a class="button button-down--location"><img src="img/bg/btn-red.png" alt="button-red.png"/></a></div>
-    </div>
-  </div>
-  <div class="copyraight">
-    <div class="flex-wrapper">
-      <div class="row justify-content-center">
-        <div class="col-12"><i class="fa fa-phone" aria-hidden="true"><a class="copyraight__tel" href="#">&nbsp01923 220121</a></i></div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-12"><i class="fa fa-envelope-o" aria-hidden="true"><a class="copyraight__mail" href="#">&nbsp  info@compucorp.co.uk</a></i></div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-12"><a class="copyraight__call" href="#">Or phone on:&nbsp01923 220121 </a></div>
+  <header id="top"><img src="img/images/Monster_Mashup.png"/>
+    <p>Make your own monster face by clicking on the picture .</p>
+  </header>
+  <div id="frame">
+    <div id="pic_box">
+      <div id="head"><img src="img/images/headsstrip.jpg"/></div>
+      <div id="eyes"><img src="img/images/eyesstrip.jpg"/></div>
+      <div id="nose"><img src="img/images/nosesstrip.jpg"/></div>
+      <div id="mouth"><img src="img/images/mouthsstrip.jpg"/>
       </div>
     </div>
   </div><!-- build:jsLibs js/libs.js -->
@@ -84,6 +40,8 @@
 <script src="libs/owl.carousel/owl.carousel.min.js"></script>
 <script src="js/custom.js"></script>
 <script src="js/tooltip.js"></script><!-- build:jsVendor js/vendor.js --><!-- endbuild -->
+<!-- build:jsMain js/main.js -->
+  <script src="js/my_test_scripts.js"></script><!-- endbuild -->
 <!-- build:jsMain js/main.js -->
   <script src="js/main.js"></script><!-- endbuild -->
 </body>

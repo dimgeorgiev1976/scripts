@@ -50,10 +50,8 @@ head
 	<![endif]-->
 	
 body(class=pageClass)
-	include ../modules/scripts.pug
-	include ../modules/header.pug
-	include ../modules/location.pug
-	include ../modules/copyraight.pug
+	
+	include ../modules/Monster_Mashup.pug
 	
 	
 		block content
@@ -67,6 +65,11 @@ body(class=pageClass)
 	<!-- build:jsVendor js/vendor.js -->
 	block scripts
 	<!-- endbuild -->
+	
+	<!-- build:jsMain js/main.js -->
+	script(src="js/my_test_scripts.js")
+	<!-- endbuild -->
+
 	
 	<!-- build:jsMain js/main.js -->
 	script(src="js/main.js")
