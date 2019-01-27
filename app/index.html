@@ -2,7 +2,7 @@
 <html lang="en"></html>
 <head>
   <meta charset="UTF-8"/>
-  <title>Главная страница</title><!--[if IE]>
+  <title>Head First Black Jack</title><!--[if IE]>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/><![endif]-->
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <meta name="keywords" content=""/>
@@ -24,24 +24,24 @@
   <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script><![endif]-->
 </head>
 <body class="index-page">
-  <header id="top"><img src="img/images/Monster_Mashup.png"/>
-    <p>Make your own monster face by clicking on the picture .</p>
-  </header>
-  <div id="frame">
-    <div id="pic_box">
-      <div id="head"><img src="img/images/headsstrip.jpg"/></div>
-      <div id="eyes"><img src="img/images/eyesstrip.jpg"/></div>
-      <div id="nose"><img src="img/images/nosesstrip.jpg"/></div>
-      <div id="mouth"><img src="img/images/mouthsstrip.jpg"/>
+  <div id="main">
+    <h1>Click to reveal your cards</h1>
+    <h3 id="hdrTotal"></h3>
+    <h3 id="hdrResult"></h3>
+    <div id="my_hand"></div>
+    <div id="result"><img src="img/images/check.png" id="imgRestart"/></div>
+    <div id="controls">
+      <div id="btnDeal"><img src="img/images/deck_small.jpg"/></div>
+      <div id="btnHit"><img src="img/images/deck_small.jpg"/></div>
+      <div id="btnStick"><img src="img/images/stick_small.jpg"/></div>
+      <div id="btnRestart"><img src="img/images/restart_small.jpg"/>
       </div>
     </div>
   </div><!-- build:jsLibs js/libs.js -->
-  <script src="libs/jquery/jquery.min.js"></script><!-- endbuild --><script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxAR2DIRJdRY-fCAp3soKVn7CGEYixjDI&callback=initMap"></script>
-<script src="libs/owl.carousel/owl.carousel.min.js"></script>
-<script src="js/custom.js"></script>
-<script src="js/tooltip.js"></script><!-- build:jsVendor js/vendor.js --><!-- endbuild -->
+  <script src="libs/jquery/jquery.min.js"></script><!-- endbuild -->
+<!-- build:jsVendor js/vendor.js --><!-- endbuild -->
 <!-- build:jsMain js/main.js -->
-  <script src="js/my_test_scripts.js"></script><!-- endbuild -->
+  <script src="js/black_jack.js"></script><!-- endbuild -->
 <!-- build:jsMain js/main.js -->
-  <script src="js/main.js"></script><!-- endbuild -->
+<!-- endbuild -->
 </body>
