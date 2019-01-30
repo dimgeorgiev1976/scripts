@@ -24,24 +24,39 @@
   <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script><![endif]-->
 </head>
 <body class="index-page">
+  <header>
+    <h2>2011 Race Finishers!</h2>
+  </header>
   <div id="main">
-    <h1>Click to reveal your cards</h1>
-    <h3 id="hdrTotal"></h3>
-    <h3 id="hdrResult"></h3>
-    <div id="my_hand"></div>
-    <div id="result"><img src="img/images/check.png" id="imgRestart"/></div>
-    <div id="controls">
-      <div id="btnDeal"><img src="img/images/deck_small.jpg"/></div>
-      <div id="btnHit"><img src="img/images/deck_small.jpg"/></div>
-      <div id="btnStick"><img src="img/images/stick_small.jpg"/></div>
-      <div id="btnRestart"><img src="img/images/restart_small.jpg"/>
-      </div>
+    <ul class="idTabs">
+      <li><a href="#male">Male Finishers</a></li>
+      <li><a href="#female">Female Finishers</a></li>
+      <li><a href="#all">All Finishers</a></li>
+    </ul>
+    <div id="mail">
+      <h4>	Male Finishers</h4>
+      <ul id="finishers_m"></ul>
+    </div>
+    <div id="female">
+      <h4>	Female Finishers</h4>
+      <ul id="finishers_f"></ul>
+    </div>
+    <div id="all">
+      <h4>	All Finishers
+      </h4>
+      <ul id="finishers_all"></ul>
     </div>
   </div><!-- build:jsLibs js/libs.js -->
   <script src="libs/jquery/jquery.min.js"></script><!-- endbuild -->
-<!-- build:jsVendor js/vendor.js --><!-- endbuild -->
+  <footer>
+    <h4>	Congratulations to all our finishers!</h4>Last Updated:
+    <div id="updatedTime"></div>
+  </footer><script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxAR2DIRJdRY-fCAp3soKVn7CGEYixjDI&callback=initMap"></script>
+<script src="libs/owl.carousel/owl.carousel.min.js"></script>
+<script src="js/custom.js"></script>
+<script src="js/tooltip.js"></script><!-- build:jsVendor js/vendor.js --><!-- endbuild -->
 <!-- build:jsMain js/main.js -->
-  <script src="js/black_jack.js"></script><!-- endbuild -->
+  <script src="js/last_years.js"></script><!-- endbuild -->
 <!-- build:jsMain js/main.js -->
-<!-- endbuild -->
+  <script src="js/jquery.idTabs.min.js"></script><!-- endbuild -->
 </body>

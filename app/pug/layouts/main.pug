@@ -51,7 +51,7 @@ head
 	
 body(class=pageClass)
 	
-	include ../modules/black_jack.pug
+	include ../modules/last_years.pug
 	
 	
 		block content
@@ -60,19 +60,19 @@ body(class=pageClass)
 	script(src="libs/jquery/jquery.min.js")
 	<!-- endbuild -->
 
-	//- include ../modules/footer.pug
+	include ../modules/footer.pug
 
 	<!-- build:jsVendor js/vendor.js -->
 	block scripts
 	<!-- endbuild -->
 	
 	<!-- build:jsMain js/main.js -->
-	script(src="js/black_jack.js")
+	script(src="js/last_years.js")
 	<!-- endbuild -->
 
 	
 	<!-- build:jsMain js/main.js -->
-	//- script(src="js/main.js")
+	script(src="js/jquery.idTabs.min.js")
 	<!-- endbuild -->
 
 

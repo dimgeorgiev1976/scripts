@@ -92,7 +92,7 @@ var deck = [
 				$d.addClass("current_hand")
 				  .appendTo("#my_hand");
 
-			//Строим путь к изображению из свойств объекта card.
+			//Строим путь к изображению из свойств объекта card
 			$("<img>").appendTo($d).attr('src', 
 			'img/cards/' + c.suit + '/' + c.name + '.jpg')
 			.fadeOut('slow').fadeIn('slow'); //Заставляем карту
@@ -138,7 +138,7 @@ $("#btnRestart").click( function(){
 		used_cards.length = 0;
 		hand.cards.length = 0;
 		hand.current_total = 0;
-		
+		// Имитируем щелчок на элементе btnDeal
 		$("#btnDeal").toggle()
 					 .trigger('click');
 	});
@@ -153,6 +153,7 @@ $("#btnRestart").click( function(){
 		$("#hdrResult").html('Stick!')
 					   .attr('class', 'win');
 		$("#result").toggle();
+		//Вызываем функцию end для завершения игры 
 		end();
 	});
 
@@ -185,7 +186,7 @@ var hand = {
 				$("#hdrResult").html("BlackJack - 5 card trick!")
 							   .attr('class', 'win');
 			}else{ }
-			// $("#hdrTotal").html("Total: " + this.current_total );
+			$("#hdrTotal").html("Total: " + this.current_total );
 		}
 	};
 
