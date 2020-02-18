@@ -29,7 +29,9 @@ Function declarations can only appear in “program code,” meaning inside of t
 of other functions or in the global space.  The name property is also used to call the same function recursively from 
 within itself
 function expressions is highlight that functions are objects like all other objects
-a function declaration, the definition of the function also gets hoisted, not only its declaration.  
+In function declaration, the definition of the function also gets hoisted, not only its declaration.  
 Function bar() only its declaration gets hoisted, the definition of bar() is not hoisted  === only variable 'bar' gets hoisted not the implementation.
 If the callback method uses "this" to refer to the object it belongs to, this can cause unexpected behavior.
- 
+If the first parameter is null, then this
+points to the global object, which is exactly what happens when you call a function
+that is not a method of a specific object.
