@@ -32,6 +32,10 @@ function expressions is highlight that functions are objects like all other obje
 In function declaration, the definition of the function also gets hoisted, not only its declaration.  
 Function bar() only its declaration gets hoisted, the definition of bar() is not hoisted  === only variable 'bar' gets hoisted not the implementation.
 If the callback method uses "this" to refer to the object it belongs to, this can cause unexpected behavior.
-If the first parameter is null, then this
-points to the global object, which is exactly what happens when you call a function
+If the first parameter is null, then this points to the global object, which is exactly what happens when you call a function
 that is not a method of a specific object.
+By private static members, we mean members that are:
+• Shared by all the objects created with the same constructor function
+• Not accessible outside the constructor
+ Private properties - you need a function to act as a closure and wrap around the private members 
+Using constructor functions looks like using classes in Java. They also enable you to add instance properties to this inside of the constructor body. However, adding methods to this is inefficient, because they end up being re-created with every instance and hat consumes more memory.That’s why reusable methods should be added to the prototype property  of the constructor 
