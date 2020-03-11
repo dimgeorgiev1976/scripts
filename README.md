@@ -25,6 +25,7 @@ When you think of a function in JavaScript, think
 of an object, with the only special feature that this object is invokable, meaning it can
 be executed
 
+
 Function declarations can only appear in “program code,” meaning inside of the bodies
 of other functions or in the global space.  The name property is also used to call the same function recursively from 
 within itself
@@ -39,3 +40,4 @@ By private static members, we mean members that are:
 • Not accessible outside the constructor
  Private properties - you need a function to act as a closure and wrap around the private members 
 Using constructor functions looks like using classes in Java. They also enable you to add instance properties to this inside of the constructor body. However, adding methods to this is inefficient, because they end up being re-created with every instance and hat consumes more memory.That’s why reusable methods should be added to the prototype property  of the constructor 
+It’s important to remember that the prototype property should point to an object, no a function, so it has to point to an instance (an object) created with the parent constructor, not to the constructor itself
