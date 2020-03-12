@@ -40,4 +40,8 @@ By private static members, we mean members that are:
 • Not accessible outside the constructor
  Private properties - you need a function to act as a closure and wrap around the private members 
 Using constructor functions looks like using classes in Java. They also enable you to add instance properties to this inside of the constructor body. However, adding methods to this is inefficient, because they end up being re-created with every instance and hat consumes more memory.That’s why reusable methods should be added to the prototype property  of the constructor 
-It’s important to remember that the prototype property should point to an object, no a function, so it has to point to an instance (an object) created with the parent constructor, not to the constructor itself
+
+The Default Pattern: the prototype property should point to an object, not a function, so it has to point to an instance (an object) created with the parent constructor(P), not to the constructor itself (C). In other words, pay attention to the new operator
+because you need it for this pattern to work.
+Rent-a-Constructor : This way you can only inherit properties added to this inside the parent constructor.
+You don’t inherit members that were added to the prototype.
