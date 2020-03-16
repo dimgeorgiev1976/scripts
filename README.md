@@ -44,4 +44,11 @@ Using constructor functions looks like using classes in Java. They also enable y
 The Default Pattern: the prototype property should point to an object, not a function, so it has to point to an instance (an object) created with the parent constructor(P), not to the constructor itself (C). In other words, pay attention to the new operator
 because you need it for this pattern to work.
 Rent-a-Constructor : This way you can only inherit properties added to this inside the parent constructor.
-You don’t inherit members that were added to the prototype.
+You don’t inherit members that were added to the prototype,  the children objects get copies of the inherited
+members, unlike the classical #1 pattern where they only get references.  The page object has an own
+tags property because using the rented constructor the new object got a copy of (not a reference to) the parent’s tags member. Changes to page.tags don’t affect the parent article because page.tags is a separate copy created during inheritance.
+
+Borrowing Constructor Pattern: The drawback of this pattern is obviously that nothing from the prototype gets inherited
+
+
+
