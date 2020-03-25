@@ -56,3 +56,35 @@ Borrowing Constructor Pattern: The drawback of this pattern is obviously that no
 
 The Prototype Chain:  Using this pattern, kid got its own property name, but the say() method was never inherited, and an attempt to call it will result in an error.  The inheritance was a one-off action that copied parent’s own properties as child’s own properties and that was about it; no __proto__ links were kept
 
+In the Prototypal inheritance pattern e child always starts as an empty object, which has no properties of its own but at
+the same time has all the functionality of its parent by benefiting from the __proto__ link.
+
+ Inheritance by Copying Properties : In this pattern, an object gets functionality from another object, simply by copying it
+. With the shallow copy (because objects are passed by reference in JavaScript), if you change a property of the child, and this property happens to be an object, then you’ll be modifying the parent as well
+Mix-ins :  Instead of copying from one object, you can copy from any number of objects and mix them all into a new object.
+
+Functions in JavaScript are objects, and they come with some interesting methods of their own, such as call() and apply(). The only difference between the two is that one takes an array of parameters to be passed to the method being called, and the other one takes parameters one by one.
+As you can see, even though twosay() was created as a global function, this didn’t point to the global object, but it pointed to object two, which was passed to bind(). Regardless of how you call twosay(), this will always be bound to two.
+This bind() function accepts an object o and a method m, binds the two together, and
+then returns another function. The returned function has access to o and m via a closure.
+Therefore even after bind() returns, the inner function will have access to o and m, which
+will always point to the original object and method
+
+​​​​​​​ Singleton / Одиночка: 
+In JavaScript, objects are never equal unless they are the same object, so even if you create an identical object with the exact same members, it won’t be the same as the first one 
+The second time you use the same class to create a new object, you should get the same object that was created the first time. So you can say that every time you create an object using the object literal, you’re actually creating a singleton, and there’s no special syntax involved.
+Using new : Functions in JavaScript are objects, so they can have properties.
+The idea is that when you use new to create several objects using the same constructor, you should get only new pointers to the exact same object. 
+​​​​​​​ Factory Method 
+The purpose of the factory is to create objects. Offers a way for the customers of the factory to create objects without knowing the specific type (class) at compile time. Performs repeating operations when setting up similar objects. 
+Sometimes the common parent is the same class that contains the factory method.
+All you need to do is look for the constructor function that creates an object of the required type
+
+​​​​​​​ Iterator / Итератор
+In the iterator pattern, your object needs to provide a next() method
+
+​​​​​​​ Decorator
+In the decorator pattern, additional functionality can be added to an object dynamically, at runtime
+
+
+
