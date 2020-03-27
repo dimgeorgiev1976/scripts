@@ -85,6 +85,40 @@ In the iterator pattern, your object needs to provide a next() method
 
 ​​​​​​​ Decorator
 In the decorator pattern, additional functionality can be added to an object dynamically, at runtime
+ The sale “knows” about the price of the item and can return it by calling the sale.getPrice() method. 
+ 
+ Each decorator actually inherits the object enhanced so far after the previous decorator. 
+ 
+/*...................Implementation Using a List..................*/
+If you want to have more methods that can be
+decorated, then the part of going through the list of decorators should be repeated by
+each additional method.
+
+​​​​​​​ Strategy
+Depending on the concrete form and the data to be validated, the clients of your validator may choose different types of checks. Your validator picks the best strategy to handle the task and delegates the concrete data checks to the appropriate algorithm. For the validator to know what is the best strategy to use in this concrete example, you need to configure the validator first and set the rules of what you consider to be valid and acceptable. The available algorithms for the checks
+are objects with a predefined interface—they provide a validate() method and a oneline help information to be used in error messages
+​​​​​​​ Facade
+Sometimes two or more methods may commonly be called together. In such cases it makes sense to create another method
+that wraps the repeating method calls. 
+stopPropagation() : Traps the event and doesn’t let it bubble up to the parent nodes 
+preventDefault() : Doesn’t let the browser do the default action (for example, following a link or submitting a form)
+ So instead of duplicating the two method calls all over the application, you can create a façade method that calls
+both of them.
+You can start with thinking about the new object’s API and then proceed to create a façade in front of the old object that follows the new API. This way, when you get to fully replacing the old object, you’ll have less client code to modify because any recent client code will already use the new API.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
