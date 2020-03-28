@@ -106,8 +106,15 @@ preventDefault() : Doesn’t let the browser do the default action (for example,
 both of them.
 You can start with thinking about the new object’s API and then proceed to create a façade in front of the old object that follows the new API. This way, when you get to fully replacing the old object, you’ll have less client code to modify because any recent client code will already use the new API.
 
+​​​​​​​ Proxy
+The proxy serves as a guardian of the object (also called a “real subject”) and tries to have the real subject do as little work as possible.The proxy receives the initialization request but never passes it on until it’s clear that the real subject is actually used. Illustrates the scenario where the client makes an initialization request and the proxy responds that all is good but doesn’t actually pass on the message until it’s obvious that the client needs some work done by the subject.
+In web applications, one of the most expensive operations you can do is a network request, so it makes sense to combine HTTP requests as much as possible
+videos: Responsible for info areas expand/collapse (method videos.getInfo()) and playing videos (method videos.getPlayer())
+http : Responsible for communication with the server via the method http.makeRequest() 
+When there’s no proxy, videos.getInfo() will call http.makeRequest() once for every video. When we add a proxy, it will become a new actor called proxy and will be sitting between videos and http and delegating the calls to makeRequest(), combining them when possible. which means the info section has already been expanded, and we can then call getPlayer().
 
-
+Introducing the proxy provides the ability to combine multiple web service requests into one with only a simple change to the original code.
+The proxy can go further in protecting the real subject http by caching the results of previous requests into a new cache property 
 
 
 
