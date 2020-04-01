@@ -115,7 +115,10 @@ When there’s no proxy, videos.getInfo() will call http.makeRequest() once for 
 
 Introducing the proxy provides the ability to combine multiple web service requests into one with only a simple change to the original code.
 The proxy can go further in protecting the real subject http by caching the results of previous requests into a new cache property 
-
+​​​​​​​ Observer
+The main motivation behind this pattern is to promote loose coupling. The publisher notifies (calls) all the subscribers when an important event occurs and may often pass a message in the form of an event object.The notification means calling a method of the subscriber object. Therefore, when subscribing, the subscriber provides one of its methods to paper’s subscribe() method.
+In the mediator pattern the mediator object knows about all other participating objects and calls their methods. The game object in the observer pattern will not do that; instead it will leave it to the objects to subscribe to interesting events. 
+For example, the score board will subscribe to game’s “scorechange” event.
 
 
 
