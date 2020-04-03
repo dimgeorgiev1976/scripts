@@ -120,9 +120,15 @@ The main motivation behind this pattern is to promote loose coupling. The publis
 In the mediator pattern the mediator object knows about all other participating objects and calls their methods. The game object in the observer pattern will not do that; instead it will leave it to the objects to subscribe to interesting events. 
 For example, the score board will subscribe to game’s “scorechange” event.
 
+DOM Access
+DOM is usually implemented separately from the JavaScript engine. From a browser’s perspective, it makes sense to take this approach,because a JavaScript application may not need DOM at all.
 
+It will also help if you add id="" attributes to elements you’ll be accessing often, because document.getElementById(myid) is the easiest and fastest way to find a node.
 
+​​​​​​​ Event delegation 
+The drawback of the event delegation is the slightly more code to filter out the events that happen in the container But the benefits— performance and cleaner code—outweigh the drawbacks significantly, so it’s a highly recommended pattern.
 
+For example YUI3 has the method Y.delegate(), which enables you to specify a CSS selector to match the wrapper and another selector to match the nodes you’re interested in. This is convenient because your callback event handler function will actually never be called when the event happens outside the nodes you care about
 
 
 
