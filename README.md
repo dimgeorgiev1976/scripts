@@ -1,6 +1,109 @@
 # scripts
 functions and all other identifiers—primitives and objects.
 
+# javasbript_the_good_parts
+
+JavaScript has a classfree object system in which objects inherit properties directly from other objects.
+All of the top-level variables
+of all compilation units are tossed together in a common namespace called the global
+object 
+Numbers have methods . JavaScript has a Math object that contains a set of methods that act on numbers.
+For example, the Math.floor(number) method can be used to convert a number into an integer.
+​​​​​​​ Grammar 
+The \u convention allows for specifying character code points numerically
+"A" === "\u0041"
+
+'c' + 'a' + 't' === 'cat' is true
+The sequence of execution can be altered by the conditional statements (if and switch),
+by the looping statements (while, for, and do),
+by the disruptive statements (break, return, and throw), 
+and by function invocation.
+
+blocks in JavaScript do not create a new scope, so variables should be defined at the
+top of the function, not in blocks.
+
+The do statement is like the while statement except that the expression is tested after
+the block is executed instead of before. 
+The throw statement raises an exception. If the throw statement is in a try block, then
+control goes to the catch clause. Otherwise, the function invocation is abandoned,
+and control goes to the catch clause of the try in the calling function.
+
+The expression is usually an object literal containing a name property and a message
+property. The catcher of the exception can use that information to determine what to
+do.
+An expression statement can either assign values to one or more variables or members, invoke a method, delete a property from an object.
+Table 2-1. Operator precedence
+. [] ( ) Refinement and invocation
+delete new typeof + - ! Unary operators
+* / % Multiplication, division, modulo
++ - Addition/concatenation, subtraction
+>= <= > < Inequality
+=== !== Equality
+&& Logical and
+|| Logical or
+?: Ternary
+The && operator produces the value of its first operand if the first operand is falsy.
+Otherwise, it produces the value of the second operand.
+The || operator produces the value of its first operand if the first operand is truthy.
+Otherwise, it produces the value of the second operand.
+
+The values produced by typeof are 'number', 'string', 'boolean', 'undefined',
+'function', and 'object'.
+Invocation causes the execution of a function value. The invocation operator is a pair of parentheses that follow the function value. The parentheses can contain arguments that will be delivered to the function.
+
+# Literals
+Object literals are a convenient notation for specifying new objects.
+The names of the properties of the object must be
+known at compile time. The values of the properties are expressions
+
+A function literal defines a function value. It can have an optional name that it can
+use to call itself recursively. It can specify a list of parameters that will act as variables initialized by the invocation arguments. The body of the function includes variable definitions and statements
+
+Numbers, strings, and booleans are object-like in that they have methods, 
+but they are immutable. Objects in JavaScript are mutable keyed collections /hashes/.
+
+JavaScript includes a prototype linkage feature that allows one object to inherit the
+properties of another.
+
+# Object Literals
+
+Object literals provide a very convenient notation for creating new object values.
+An object literal is a pair of curly braces surrounding zero or more name/value
+pairs. An object literal can appear anywhere an expression can appear:
+
+
+# Retrieval
+
+Values can be retrieved from an object by wrapping a string expression in a [ ] suffix. If the string expression is a constant, and if it is a legal JavaScript name and not a
+reserved word, then the . notation can be used instead
+
+# Reference
+
+Objects are passed around by reference. They are never copied.
+
+# Prototype
+
+Every object is linked to a prototype object from which it can inherit properties.All
+objects created from object literals are linked to Object.prototype, an object that
+comes standard with JavaScript.When you make a new object, youcan select the object that should be its prototype.
+
+The prototype link has no effect on updating. When we make changes to an object,
+the object’s prototype is not touched. The prototype link is used only in retrieval.
+If the desired property exists nowhere in the prototype chain,
+then the result is the undefined value. This is called delegation.
+
+# Reflection
+
+Use the hasOwnProperty method, which returns true if the object has a particular property. 
+The hasOwnProperty method does not look at the prototype chain:
+flight.hasOwnProperty('number') // true
+flight.hasOwnProperty('constructor') // false
+
+
+
+
+
+# JavaScript_Patterns_(2010)
 literals such as object,array, and regular expression literals
 
 objects in JavaScript = key - value /*  hash tables of key - value pairs */
@@ -9,10 +112,8 @@ The values can be properties = primitives /* number, string, boolean, null, and 
 The values can also be functions in which case they are called methods.
 methods, should go to the prototype.
 
-Many of the properties of the built-in native objects are also mutable.
-Objects are simply mutable hashes
 
- Object() constructor accepts a parameter  depending on the value passed, it may decide to delegate the object creation to another built-in constructor and return a different object 
+Object() constructor accepts a parameter  depending on the value passed, it may decide to delegate the object creation to another built-in constructor and return a different object 
 
 constructors are still just functions but invoked with new
 
