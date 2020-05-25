@@ -9,6 +9,8 @@ of all compilation units are tossed together in a common namespace called the gl
 object 
 Numbers have methods . JavaScript has a Math object that contains a set of methods that act on numbers.
 For example, the Math.floor(number) method can be used to convert a number into an integer.
+
+
 ​​​​​​​ Grammar 
 The \u convention allows for specifying character code points numerically
 "A" === "\u0041"
@@ -49,6 +51,18 @@ Otherwise, it produces the value of the second operand.
 
 The values produced by typeof are 'number', 'string', 'boolean', 'undefined',
 'function', and 'object'.
+
+If the operand of ! is truthy, it produces false. Otherwise, it produces true.
+
+The + operator adds or concatenates. If you want it to add, make sure both operands are numbers.
+
+The / operator can produce a noninteger result even if both operands are integers.
+
+The && operator produces the value of its first operand if the first operand is falsy.
+Otherwise, it produces the value of the second operand.
+The || operator produces the value of its first operand if the first operand is truthy.
+Otherwise, it produces the value of the second operand.
+
 Invocation causes the execution of a function value. The invocation operator is a pair of parentheses that follow the function value. The parentheses can contain arguments that will be delivered to the function.
 
 # Literals
@@ -67,10 +81,14 @@ properties of another.
 
 # Object Literals
 
-Object literals provide a very convenient notation for creating new object values.
+Object literals provide a very convenient notation for creating new object values. The names of the
+properties can be specified as names or as strings. The names of the properties of the object must be
+known at compile time
 An object literal is a pair of curly braces surrounding zero or more name/value
 pairs. An object literal can appear anywhere an expression can appear:
-
+object literal = name : expression
+               string : 
+A property’s value can be obtained from any expression, including another object literal. 
 
 # Retrieval
 
@@ -85,22 +103,90 @@ Objects are passed around by reference. They are never copied.
 
 Every object is linked to a prototype object from which it can inherit properties.All
 objects created from object literals are linked to Object.prototype, an object that
-comes standard with JavaScript.When you make a new object, youcan select the object that should be its prototype.
+comes standard with JavaScript. When you make a new object, you can select the object that should be its prototype.
 
 The prototype link has no effect on updating. When we make changes to an object,
 the object’s prototype is not touched. The prototype link is used only in retrieval.
 If the desired property exists nowhere in the prototype chain,
 then the result is the undefined value. This is called delegation.
 
-# Reflection
+# Reflection Enumeration
 
 Use the hasOwnProperty method, which returns true if the object has a particular property. 
 The hasOwnProperty method does not look at the prototype chain:
 flight.hasOwnProperty('number') // true
 flight.hasOwnProperty('constructor') // false
 
+#  Function Objects They are used for code reuse, information hiding, and composition.
 
+Functions are used to specify the behavior of objects. Functions in JavaScript are objects. 
+Objects produced from object literals are linked to Object.prototype. Function objects are linked to Function.prototype (which is itself linked to Object.prototype). 
+Every function is also created with two additional hidden properties: the function’s context 
+and the code that implements the function’s behavior. Every function object is also created with a prototype property. Its value is an object
+with a constructor property whose value is the function.Since functions are objects, they can be used like any other value. Functions can be: 
+stored in variables, objects, and arrays.
+Functions can be passed as arguments to functions, and functions can be returned from functions.  Also, since functions are
+objects, functions can have methods. The thing that is special about functions is that they can be invoked.
 
+#  Function Literal
+An inner function of course has access to its parameters and variables. An inner function also enjoys access to the parameters and variables of the functions it is nested within. 
+# The function object created by a function literal contains a link to that outer context. This is called closure.
+
+# Invocation
+
+Within the parentheses is a set of zero or more parameter names, separated by commas. These names will be defined as variables in the function. Unlike ordinary variables, instead of being initialized to undefined, they will be initialized to the arguments supplied when the function is invoked. 
+
+The parentheses can contain zero or more expressions, separated by commas. Each expression produces one argument value. Each of the argument values will be assigned to the function’s parameter names
+
+In addition to the declared parameters, every function receives two additional parameters: this and arguments
+The this parameter value is determined by the invocation pattern. 
+There are four patterns of invocation in JavaScript: 
+the method invocation pattern, 
+the function invocation pattern, 
+the constructor invocation pattern,
+and the apply invocation pattern. 
+The patterns differ in how the bonus parameter this is initialized.
+If there are too many argument values, the extra argument values will be ignored. If there are too few argument values, the undefined value will be substituted for the missing values
+
+# The Method invocation pattern
+When a function is stored as a property of an object, we call it a method. When a
+method is invoked, this is bound to that object
+A method can use 'this' to access the object so that it can retrieve values from the
+object or modify the object. The binding of 'this' to the object happens at invocation time. This very late binding makes functions that use this highly reusable.Methods that get their object context from 'this' are called 'public methods' .
+
+# The Function Invocation Pattern
+When a function is not the property of an object, then it is invoked as a function.
+When a function is invoked with this pattern, 'this' is bound to the global object 
+A consequence of this error is that a method cannot
+employ an inner function to help it do its work because the inner function does not
+share the method’s access to the object as its 'this' is bound to the wrong value. Fortunately, there is an easy workaround. If the method defines a variable and assigns it
+the value of 'this', the inner function will have access to this through that variable. By
+convention, the name of that variable is that:
+
+# The Constructor Invocation Pattern
+
+If a function is invoked with the new prefix, then a new object will be created with a
+hidden link to the value of the function’s prototype member, and 'this' will be bound
+to that new object.
+Functions that are intended to be used with the new prefix are called constructors. By
+convention, they are kept in variables with a capitalized name
+
+# The Apply Invocation Pattern
+The apply method lets us construct an array of arguments to use to invoke a function. It also lets us choose the value of this. The apply method takes two parameters. The first is the value that should be bound to this. The second is an array of
+parameters
+
+# Arguments
+A bonus parameter that is available to functions when they are invoked is the
+arguments array. It gives the function access to all of the arguments that were supplied with the invocation, including excess arguments that were not assigned to
+parameters. This makes it possible to write functions that take an unspecified number of parameters:
+arguments is not really an array. It is an array-like object. arguments has a length property, but it lacks all of the array methods
+
+# Return
+The return statement can be used to cause the function to return early. When return is
+executed, the function returns immediately without executing the remaining statements.
+A function always returns a value. If the return value is not specified, then undefined
+is returned. If the function was invoked with the new prefix and the return value is not an object,
+then this (the new object) is returned instead.
 
 
 # JavaScript_Patterns_(2010)
@@ -108,9 +194,13 @@ literals such as object,array, and regular expression literals
 
 objects in JavaScript = key - value /*  hash tables of key - value pairs */
 
-The values can be properties = primitives /* number, string, boolean, null, and undefined values */ or other objects; 
+The values can be properties = primitives /* number, string, boolean, null, and undefined values */ or other objects;
+Numbers, strings, and booleans are
+object-like in that they have methods, but they are immutable 
+
 The values can also be functions in which case they are called methods.
 methods, should go to the prototype.
+The values of the properties are expressions.
 
 
 Object() constructor accepts a parameter  depending on the value passed, it may decide to delegate the object creation to another built-in constructor and return a different object 
