@@ -136,7 +136,11 @@ An inner function of course has access to its parameters and variables. An inner
 
 Within the parentheses is a set of zero or more parameter names, separated by commas. These names will be defined as variables in the function. Unlike ordinary variables, instead of being initialized to undefined, they will be initialized to the arguments supplied when the function is invoked. 
 
-The parentheses can contain zero or more expressions, separated by commas. Each expression produces one argument value. Each of the argument values will be assigned to the function’s parameter names
+The parentheses can contain zero or more expressions, separated by commas. 
+# !! Each expression produces one argument value. Each of the argument values will be assigned to the function’s parameter names
+There is no runtime error when the number of arguments and the number of parameters do not
+match
+There is no type checking on the argument values: any type of value can be passed to any parameter.
 
 In addition to the declared parameters, every function receives two additional parameters: this and arguments
 The this parameter value is determined by the invocation pattern. 
@@ -161,7 +165,7 @@ A consequence of this error is that a method cannot
 employ an inner function to help it do its work because the inner function does not
 share the method’s access to the object as its 'this' is bound to the wrong value. Fortunately, there is an easy workaround. If the method defines a variable and assigns it
 the value of 'this', the inner function will have access to this through that variable. By
-convention, the name of that variable is that:
+convention, the name of that variable is 'that':
 
 # The Constructor Invocation Pattern
 
@@ -178,8 +182,9 @@ parameters
 # Arguments
 A bonus parameter that is available to functions when they are invoked is the
 arguments array. It gives the function access to all of the arguments that were supplied with the invocation, including excess arguments that were not assigned to
-parameters. This makes it possible to write functions that take an unspecified number of parameters:
-arguments is not really an array. It is an array-like object. arguments has a length property, but it lacks all of the array methods
+parameters. This makes it possible to write functions that take an unspecified number of parameters.
+
+Arguments is not really an array. It is an array-like object. arguments has a length property, but it lacks all of the array methods
 
 # Return
 The return statement can be used to cause the function to return early. When return is
@@ -188,6 +193,112 @@ A function always returns a value. If the return value is not specified, then un
 is returned. If the function was invoked with the new prefix and the return value is not an object,
 then this (the new object) is returned instead.
 
+# Exceptions 
+The throw statement interrupts execution of the function. It should be given an
+exception object containing a name property that identifies the type of the exception,
+and a descriptive message property. A try statement has a single catch block that will catch all exceptions. If your handling depends on the type of the exception, then the exception handler will have to
+inspect the name to determine the type of the exception.
+          
+# Recursion
+Recursion is a powerful programming technique in which a problem is divided into a set of
+similar subproblems, each solved with a trivial solution. Generally, a recursive function calls itself to solve its subproblems.
+
+# Scope
+JavaScript does have function scope. That means that the parameters and variables defined in a function
+are not visible outside of the function, and that a variable defined anywhere within a function is visible
+everywhere within the function.  JavaScript because it lacks block scope it is best to declare all of the variables used
+in a function at the top of the function body.
+
+# Closure
+The good news about scope is that inner functions get access to the parameters and variables of the functions they are defined within (with the exception of this and arguments). This is a very good thing.
+
+Instead of initializing myObject with an object literal, we will initialize myObject by calling a function that returns an object literal. That function defines a value variable. That variable is always available to the increment and getValue methods, but the function’s scope keeps it hidden from the rest of the program
+We are not assigning a function to myObject. We are assigning the result of invoking that function.
+
+get_status does not have access to a copy of the parameter; it has access to the parameter itself. This is possible because the function has access to the context in which it was created. This is called closure
+It is important to understand that the inner function has access to the actual variables of the outer functions and not copies in order to avoid the following problem
+It fails because the handler functions are bound to the variable i, not the value of the variable i at the time the function was made.
+# !! That function will return an event handler function that is bound to the value of i that was passed in, not to the i defined in add_the_handlers. 
+
+# Callbacks
+Functions can make it easier to deal with discontinuous events. We pass a function parameter to the 
+#  send_request_asynchronously function that will be called when the response is available.
+
+# Module
+A module is a function or object that presents an interface but that hides its state and implementation
+By using functions to produce modules, we can almost completely eliminate our use of global variables, thereby mitigating one of JavaScript’s worst features.
+The module pattern takes advantage of function scope and closure to create relationships that are binding and private.
+
+The general pattern of a module is a function that defines private variables and functions; creates privileged functions which, through closure, will have access to the private variables and functions; and that returns the privileged functions or stores them in an accessible place.
+
+It promotes information hiding and other good design practices. It is very effective in encapsulating applications and other singletons. It can also be used to produce objects that are secure. 
+
+seqer is simply a collection of functions, and those functions are capabilities that grant specific powers to use or
+modify the secret state. If we passed seqer.gensym to a third party’s function, that function would be able to
+generate unique strings, but would be unable to change the prefix or seq.
+
+# Cascade
+It is typical for methods that set or change the state of an object to return nothing. If we have those methods
+return this instead of undefined, we can enable cascades.
+
+# Curry 
+Currying allows us to produce a new function by combining a function and an argument:
+
+# Memoization
+Functions can use objects to remember the results of previous operations, making it possible to avoid unnecessary work. 
+
+# Inheritance
+ If a new class is mostly similar to an existing class, youonly have to specify the differences. 
+The other benefit of classical inheritance is that it includes the specification of a system of types. This mostly frees the programmer from having to write explicit casting operations,  because when casting, the safety benefits of a type system are lost.
+JavaScript, being a loosely typed language, never casts . What matters about an object is what it can do, not what it is descended  from.
+
+# Pseudoclassical
+Instead of having objects inherit directly from other objects, an unnecessary level of indirection is inserted such that objects are produced by constructor functions. The constructor property is not useful. It is the prototype object that is important. 
+When a function is invoked with the constructor invocation pattern using the 'new' prefix, this modifies the way in which the function is executed
+If you forget to include the new prefix when calling a constructor function, then this will not be bound to a new object. 
+Sadly, this will be bound to the global object, so instead of augmenting your new object, you will be clobbering global variables. That is really bad. There is no compile warning, and there is no runtime warning !
+To mitigate this problem, there is a convention that all constructor functions are named with an initial capital, and that
+nothing else is spelled with an initial capital. A much better alternative is to not use 'new' at all.
+In classical languages, class inheritance is the only form of code reuse. JavaScript has more and better options.
+
+
+# Object Specifiers
+
+JSON text can only describe data, but sometimes the data represents an object, and it would be useful to associate the data with its methods. 
+This can be done trivially if the constructor takes an object specifier because we can simply pass the JSON object
+to the constructor and it will return a fully constituted object.
+
+# Prototypal
+Prototypal inheritance is conceptually simpler than classical inheritance: a new object can inherit the properties of an old object. 
+
+# Differential inheritance.
+Sometimes is it useful for data structures to inherit from other data structures. In a sense, an inner scope inherits from its outer scope. In a sense, an inner scope inherits from its outer scope... JavaScript objects are very good at representing this relationship
+
+# Functional
+
+1. It creates a new object. There are lots of ways to make an object. It can make an object literal, or it can call a constructor function with the new prefix, or it can use the Object.create method to make a new instance from an existing object, or it can call any function that returns an object 
+The 'my' object allows the other constructor to share the material that we put into 'my'.
+# The other constructor may also put its own shared secrets into 'my' so that our constructor can take advantage of it
+
+2. It optionally defines private instance variables and methods. The variables and inner functions of the
+constructor become the private members of the instance. The inner functions have access to 'spec' and 'my' and 'that' and the private variables.
+
+3. Next, add the shared secrets to the my object. This is done by assignment: my.member = value
+It augments that new object with methods. Those methods will have privileged access to the parameters and the vars defined in the second step.
+The advantage to defining methodical in two steps is that if other methods want to call methodical, they can call methodical( ) instead of that.methodical( ), the methods that call methodical will continue to work the same because their private methodical is not affected by modification of the instance.
+
+4. It returns that new object
+
+The spec object contains all of the information that the constructor needs to make an instance. The contents of the spec could be copied into private variables or transformed by other functions. Or the methods can access information from spec as they need it
+
+The my object is a container of secrets that are shared by the constructors in the inheritance chain .
+The functional pattern also gives us a way to deal with super methods. We will make a superior method that takes a method name and returns a function that invokes that method. The function will invoke the original method even if the property is
+changed.
+
+
+# Parts
+
+JavaScript’s loose typing is a big benefit here because we are not burdened with a type system that is concerned about the lineage of classes. Instead, we can focus on the character of their contents
 
 # JavaScript_Patterns_(2010)
 literals such as object,array, and regular expression literals
@@ -198,8 +309,7 @@ The values can be properties = primitives /* number, string, boolean, null, and 
 Numbers, strings, and booleans are
 object-like in that they have methods, but they are immutable 
 
-The values can also be functions in which case they are called methods.
-methods, should go to the prototype.
+The values can also be functions in which case they are called methods. Methods, should go to the prototype.
 The values of the properties are expressions.
 
 
