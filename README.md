@@ -371,12 +371,20 @@ It also inspects the
 • The entity &lt; must be used for literal <.
 
 JSLint also checks for the occurrence of </ in string literals. Youshould always write <\/ instead. The extra backslash is ignored by the JavaScript compiler, but not by the HTML parser. Tricks like this should not be necessary, and yet they are.
-
-
-
-
-
-
+# • Closure: the variables and parameters that are declared in the function that are used by its inner functions.
+  • Variables: the variables declared in the function that are used only by the function.
+  • Unused: the variables that are declared in the function that are not used. This may be an indication of an error
+  • Outer: variables used by this function that are declared in another function.
+  • Global: global variables that are used by this function
+  • Label: statement labels that are used by this function.
+  
+# A JSON object is an unordered container of name/value pairs.
+A name can be any string. A value can be any JSON value, including arrays and objects. JSON objects can be nested to any depth, but generally it is most effective to keep them relatively flat
+  
+The JSON array is an ordered sequence of values. A value can be any JSON value, including arrays and objects. Most languages have a feature that maps easily onto JSON arrays, such as an array, vector, list, or sequence.
+  
+  
+  
 
 # JavaScript_Patterns_(2010)
 literals such as object,array, and regular expression literals
