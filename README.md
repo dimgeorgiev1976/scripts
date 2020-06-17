@@ -300,6 +300,71 @@ changed.
 
 JavaScript’s loose typing is a big benefit here because we are not burdened with a type system that is concerned about the lineage of classes. Instead, we can focus on the character of their contents
 
+The rule is simple: when the property names are small sequential integers, you should use an array. Otherwise, use an object
+
+JavaScript has C syntax, but its blocks don’t have scope. 
+In most languages, it is generally best to declare variables at the site of first use. That turns out to be a bad practice in JavaScript because it does not have block scope. It is better to declare all variables at the top of each function.
+
+A global variable is a variable that is visible in every scope. Use of global variables degrades the reliability of the programs that use them.  If the subprograms happen to have global variables that share the same names, then they will interfere with each other and likely fail, usually in difficult to diagnose ways.
+The problem with JavaScript isn’t just that it allows them, it requires them. JavaScript does not have a linker. All compilation units are loaded into a common global object.
+There are three ways to define global variables. The first is to place a var statement outside of any function: 
+var foo = value;
+The second is to add a property directly to the global object. The global object is the container of all global variables.
+window.foo = value;
+The third is to use a variable without declaring it. This is called implied global:
+foo = value;
+JavaScript uses the block syntax, but does not provide block scope: a variable declared in a block is visible everywhere in the function containing the block. 
+
+# Object
+JavaScript’s objects are never truly empty because they can pick up members from the prototype chain. Sometimes that matters
+
+# eval
+The eval function passes a string to the JavaScript compiler and executes the result. It is the single most misused feature of JavaScript. The eval function also compromises the security of your application because it grants too much authority to the eval’d text. When given string arguments, setTimeout and setInterval act as eval. The string argument form also should be avoided.
+
+# A function statement is shorthand for a 
+var statement with a function value. The statement:
+function foo( ) {} means about the same thing as: var foo = function foo( ) {};
+To use the language well, it is important to understand that functions are values. function statements are subject to hoisting. This means that regardless of where a function is placed, it is moved to the top of the scope in which it is defined.
+It turns out that most browsers allow function statements in if statements, but they vary in how that should be interpreted. That creates portability problems
+
+# new
+JavaScript’s new operator creates a new object that inherits from the operand’s prototype member, and then calls the operand, binding the new object to this. This gives the operand (which had better be a constructor function) a chance to customize the new object before it is returned to the requestor.
+
+# JSLint expects that all variables and functions will be declared before they are used
+or invoked. This allows it to detect implied global variables. It is also good practice because it makes programs easier to read.
+
+A global declaration comment can be used to list all of the names that you are intentionally using as global variables. JSLint can use this information to identify misspellings and forgotten var declarations. A global declaration can look like this:
+/*global getElementByAttribute, breakCycles, hanoi */
+
+# Expression Statements
+An expression statement is expected to be an assignment, a function/method call, or delete. All other expression statements are considered errors.
+
+# for in Statement
+The for in statement allows for looping through the names of all of the properties of an object. Unfortunately, it also loops through all of the members that were inherited through the prototype chain. This has the bad side effect of serving up method functions when the interest is in the data members. 
+The body of every for in statement should be wrapped in an if statement that does filtering. if can select for a particular type or range of values, it can exclude functions, or it can exclude properties from the prototype. For example:
+for (name in object) {
+ if (object.hasOwnProperty(name)) {
+ ....
+ }
+}
+# switch Statement
+A common error in switch statements is to forget to place a break statement after each case, resulting in unintended fall-through. JSLint expects that the statement before the next case or default is one of these: break, return, or throw.
+ 
+# JSLint expects that:
+• A var will be declared only once, and that it will be declared before it is used.
+• A function will be declared before it is used.
+• Parameters will not also be declared as vars.
+JSLint does not expect:
+• The arguments array to be declared as a var.
+• That a variable will be declared in a block. This is because JavaScript blocks do
+not have block scope. This can have unexpected consequences, so define all variables at the top of the function body 
+
+JSLint expects labels only on statements that interact with break: switch, while, do, and for. JSLint expects that labels will be distinct from variables and parameters.
+
+
+
+
+
 # JavaScript_Patterns_(2010)
 literals such as object,array, and regular expression literals
 
