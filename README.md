@@ -328,7 +328,7 @@ To use the language well, it is important to understand that functions are value
 It turns out that most browsers allow function statements in if statements, but they vary in how that should be interpreted. That creates portability problems
 
 # new
-JavaScript’s new operator creates a new object that inherits from the operand’s prototype member, and then calls the operand, binding the new object to this. This gives the operand (which had better be a constructor function) a chance to customize the new object before it is returned to the requestor.
+Constructors are functions that are designed to be used with the new prefix. The new prefix creates a new object based on the function’s prototype, and binds that object to the function’s implied this parameter.
 
 # JSLint expects that all variables and functions will be declared before they are used
 or invoked. This allows it to detect implied global variables. It is also good practice because it makes programs easier to read.
@@ -360,6 +360,13 @@ JSLint does not expect:
 not have block scope. This can have unexpected consequences, so define all variables at the top of the function body 
 
 JSLint expects labels only on statements that interact with break: switch, while, do, and for. JSLint expects that labels will be distinct from variables and parameters.
+
+
+
+
+
+
+
 
 
 
