@@ -361,10 +361,16 @@ not have block scope. This can have unexpected consequences, so define all varia
 
 JSLint expects labels only on statements that interact with break: switch, while, do, and for. JSLint expects that labels will be distinct from variables and parameters.
 
+JSLint does not do any kind of global analysis. It does not attempt to determine that functions used with new are really constructors (except by enforcing capitalization conventions), or that method names are spelled correctly.
 
+It also inspects the 
+# HTML content, looking for problems that are known to interfere with JavaScript:
+• All tag names must be in lowercase.
+• All tags that can take a close tag (such as </p>) must have a close tag.
+• All tags are correctly nested.
+• The entity &lt; must be used for literal <.
 
-
-
+JSLint also checks for the occurrence of </ in string literals. Youshould always write <\/ instead. The extra backslash is ignored by the JavaScript compiler, but not by the HTML parser. Tricks like this should not be necessary, and yet they are.
 
 
 
