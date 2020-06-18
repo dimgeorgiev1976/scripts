@@ -382,9 +382,29 @@ JSLint also checks for the occurrence of </ in string literals. Youshould always
 A name can be any string. A value can be any JSON value, including arrays and objects. JSON objects can be nested to any depth, but generally it is most effective to keep them relatively flat
   
 The JSON array is an ordered sequence of values. A value can be any JSON value, including arrays and objects. Most languages have a feature that maps easily onto JSON arrays, such as an array, vector, list, or sequence.
-  
-  
-  
+
+HTML does not allow the sequence </ except to start the </script> tag. JSON allows <\/, which produces the same result but does not confuse HTML.
+
+Currently, the best technique for obtaining data from a server in a web browser is through XMLHttpRequest. XMLHttpRequest can obtain data only from the same server that produced the HTML.
+
+# The danger can be avoided by using the JSON.parse method instead of eval
+It is recommended that you always use JSON.parse instead of eval to defend against server incompetence. It is also good practice for the day when the browser provides safe data access to other servers.
+# A
+common Ajax pattern is for the server to send an HTML text fragment that gets assigned to the innerHTML property of an HTML element. This is a very bad practice. If the HTML text contains a <script> tag or its equivalent, then an evil script will
+run. This again could be due to server incompetence 
+The evil script has access to the global object, which gives it access to all of the data in the application except for variables hidden in closures.
+It has access to the document object, which gives it access to everything that the user sees. It also gives
+the evil script the capability to dialog with the user.
+The document object also gives the evil script access to the network, allowing it to load more evil scripts, or to probe for sites within your firewall, or to send the secrets it has learned to any server in the world
+
+These dangers are not caused by Ajax or JSON or XMLHttpRequest or Web 2.0 (whatever that is). These dangers have been in the
+browser since the introduction of JavaScript, and will remain until JavaScript is replaced. Be careful.
+
+
+
+
+
+
 
 # JavaScript_Patterns_(2010)
 literals such as object,array, and regular expression literals
